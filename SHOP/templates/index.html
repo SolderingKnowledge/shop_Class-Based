@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+     
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+    
+    </head>
+    
+    <body>
+
+      {% include 'base/nav.html' %}
+      
+      
+      {% block body %}
+       
+        
+
+          <div class="jumbotron text-center">
+            <h1>Repair Center</h1> 
+            <p>Phone, computer, tablet, iPad we fix them all</p>
+            <img src="{% static 'img/c.jpg' %}" class="img-fluid">
+          </div>
+            <!-- Locations -->
+            <div class="container-fluid text-center">
+              <h2><i class="fa fa-globe" aria-hidden="true"></i> Locations</h2>
+              <br>
+              <div class="row">
+                <div class="col-sm-4">
+                  <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Phone Repair</h4>
+                  <p><i class="fa fa-car" aria-hidden="true"></i> 56 Santa Rosa, CA, 95789</p>
+                  <p><i class="fa fa-phone" aria-hidden="true"></i> +1 707-000-0000</p>
+                </div>
+                <div class="col-sm-4">
+                  <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Computer Repair</h4>
+                  <p><i class="fa fa-car" aria-hidden="true"></i> 56 San Rafael, CA, 95777</p>
+                  <p><i class="fa fa-phone" aria-hidden="true"></i> +1 415-000-0000</p>
+                </div>               
+                 <div class="col-sm-4">
+                  <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Ipad Repair</h4>
+                  <p><i class="fa fa-car" aria-hidden="true"></i> 56 San Francisco, CA, 95700</p>
+                  <p><i class="fa fa-phone" aria-hidden="true"></i> +1 312-000-0000</p>
+                </div>
+              </div>
+              <br>
+              <br>
+              <br>
+            </div>
+
+        
+              
+      
+      
+      {% endblock  %}
+
+      
+
+
+
+
+    </body>
+  </html>
+

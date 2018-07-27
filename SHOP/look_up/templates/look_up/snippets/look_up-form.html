@@ -1,0 +1,8 @@
+<form method='GET' action='{% url "look_up:query" %}' class="form my-2 my-lg-0 search-form">
+  <div class='input-group'>
+    <input class="form-control" type="text" placeholder="Look for repair services" name='q' aria-label="Search" value='{{ request.GET.q }}'>
+    <span class='input-group-btn'>
+        <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-search"></span>Search</button>
+    </span>
+    </div>
+</form>

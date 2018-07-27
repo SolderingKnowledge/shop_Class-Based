@@ -1,0 +1,5 @@
+<form method='POST' action='{% url "cart:update" %}' data-endpoint='{% url "cart:update" %}' class="form"> {% csrf_token %}
+    <input class='cart-item-merchandise-id' type='hidden' name='merchandise_id' value='{{ merchandise_id }}' />
+      <button type='submit' class='btn btn-link btn-md' style="padding:0px;cursor: pointer;"><i class="fa fa-trash" aria-hidden="true"></i>Remove</button>
+    </span>
+</form>

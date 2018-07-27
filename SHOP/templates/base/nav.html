@@ -1,0 +1,61 @@
+{% url 'index' as home_url %}
+{% url 'contact' as contact_url %}
+{% url 'merchandise:list' as merchandise_list_url %}
+{% url 'user_log_in' as login_url %}
+{% url 'user_log_out' as logout_url %}
+{% url 'user_sign_up' as register_url %}
+{% url 'cart:index' as cart_url %}
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+   <div class='container'>
+  <a class="navbar-brand" href="{{ home_url }}">Repair Center
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if request.path == home_url %}active{% endif %}">
+        <a class="nav-link" href="{{ home_url }}"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% if request.path == contact_url %}active{% endif %}">
+        <a class="nav-link" href="{{ contact_url }}"><i class="fa fa-envelope" aria-hidden="true"></i>Contact</a>
+      </li>
+      <li class="nav-item {% if request.path == merchandise_list_url %}active{% endif %}">
+        <a class="nav-link" href="{{ merchandise_list_url }}"><i class="fa fa-wrench" aria-hidden="true"></i>Services</a>
+      </li>
+
+
+      {% if request.user.is_authenticated %}
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href=""><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+          <a class="dropdown-item" href="#billing"><i class="fa fa-wrench" aria-hidden="true"></i>Settings</a>
+          <a class="dropdown-item" href=""><i class="fa fa-comment" aria-hidden="true"></i>Messages</a>
+          <a class='dropdown-item' href=''><i class="fa fa-money" aria-hidden="true"></i>Purchased</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{ logout_url }}"><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a>
+        </div>
+      </li>
+      {% else %}
+       <li class="nav-item {% if request.path == register_url %}active{% endif %}">
+        <a class="nav-link" href="{{ register_url }}"><i class="fa fa-user" aria-hidden="true"></i>Signup</a>
+      </li>
+      <li class="nav-item {% if request.path == login_url %}active{% endif %}">
+        <a class="nav-link" href="{{ login_url }}"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+      </li>
+      {% endif %}
+      <li class="nav-item {% if request.path == cart_url %}active{% endif %}"">
+        <a class="nav-link" href="{{ cart_url }}"><span class='navbar-cart-count'>{{ request.session.cart_items }}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart</a>
+      </li>
+    </ul>
+    {% include 'look_up/snippets/look_up-form.html' %}
+  </div>
+</div>
+</nav>

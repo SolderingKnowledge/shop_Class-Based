@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<h1 style="text-align: center">Cart</h1>
+
+{% if cart.merchandises.exists %}
+  <table class="table cart-table">
+    <thead>
+      <tr class="danger">
+        <th>Item</th>
+        <th>Repair Service</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody class='cart-body'>
+      {% for merchandise in cart.merchandises.all %}
+      <tr class='cart-product'>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href='{{ merchandise.get_absolute_url }}'>{{ merchandise.title }}</a> 
+          {% include 'cart/snippets/remove-merchandise.html' with merchandise_id=merchandise.id %}
+        </td>
+        <td>{{ merchandise.price }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2"></td>
+        <td><b>Subtotal</b> $<span class='cart-subtotal'>{{ cart.subtotal }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td><b>Total</b> $<span class='cart-total'>{{ cart.total }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td><a class='btn btn-primary' href=''><i class="fa fa-sign-in" aria-hidden="true"></i>Proceed to checkout</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class='cart-item-remove-form' style='display:none'>
+
+      {% include 'cart/snippets/remove-merchandise.html' %}
+    </div>
+
+{% else %}
+  <p style="text-align: center"><i class="fa fa-" aria-hidden="true"></i>Currently, cart is empty</p>
+  {% endif %}
+
+
+{% endblock %}

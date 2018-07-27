@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+     
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+    
+    </head>
+    
+    <body>
+
+      {% include 'base/nav.html' %}
+      
+      
+      {% block body %}
+        
+        <div class="jumbotron text-center">
+          <h1>Repair Center</h1> 
+          <p>Phone, computer, tablet, iPad we fix them all</p>
+
+        <!--contact section-->
+          <div class="container">
+            <h2><i class="fa fa-envelope" aria-hidden="true"></i>Contact</h2>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-sm-4 col-md-6 form-group">
+                      <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %}
+
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                        <br/>
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                        <br/>
+                        <textarea class="form-control" id="content" name="content" placeholder="Question or ask for quote" rows="8"></textarea>
+                        <br/>
+                        <button class="btn align-center btn-success" type="submit"><i class="fa fa-plane" aria-hidden="true"></i> Send</button>
+
+                      </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      {% endblock  %}
+
+      
+
+
+
+
+      </body>
+</html>
